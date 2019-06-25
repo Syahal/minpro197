@@ -16,37 +16,40 @@
 					<tr>
 						<th>Nama Keahlian</th>
 						<th>Level Keahlian</th>
+						<th>Biodata Id</th>
 						<th>#</th>
 					</tr>
 				</thead>
 				<tbody id="keahlian-content">
-
+					<tr th:each="item :${listKeahlian}">
+						<td th:text="${item.skillName}"></td>
+						<td th:text="${item.skillLevel.name}"></td>
+						<td th:text="${item.biodata.id}"></td>
+						<td class="col-md-1">
+							<div class="btn-group">
+								<button data-toggle="dropdown"
+									class="btn btn-default dropdown-toggle" type="button"
+									aria-expanded="false">
+									More <span class="caret"></span>
+								</button>
+								<ul role="menu" class="dropdown-menu">
+									<li class="edit"><a href="#">Ubah</a></li>
+									<li class="delete"><a href="#">Hapus</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
 				</tbody>
-				</div>
-				</div>
-				</div>
+			</table>
+		</div>
+	</div>
+</div>
 
-				<script>
-	//1. baca fungsi javascript
-	//fungsi javascript
-	function loadData() {
-		//fungsi jquery
-		$.ajax({
-			url : '/keahlian/list',
-			type : 'get',
-			dataType : 'html',
-			success : function(result) {
-				$("#keahlian-content").html(result);
-			}
-		});
-	}
-	//2. fungsi jquery, pertama kali di halaman load
-	$(function() {
-		loadData();
-	});
+<script>
+	
 
-	// 3. tambah Data Keluarga
-	$("#btn-add").click(function(event) {
+	// 3. tambah Data Keahlian
+	$("#btn-addkeahlian").click(function(event) {
 		event.preventDefault();
 		var url = 'keahlian/add';
 		$.ajax({
@@ -59,7 +62,7 @@
 			}
 		});
 	});
-	
+
 	// 4. event di modal input, kemudian cari elemen dengan id => form-keahlian
 	// eventnya itu adalah ketika formnya di submit
 	$("#main-modal").on("submit", "#form-keahlian", function() {
@@ -95,7 +98,5 @@
 		// sehingga form akan diam tidak melakukan action apapun
 		return false;
 	});
-		
-	
 </script>
 </html>
