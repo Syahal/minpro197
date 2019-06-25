@@ -1,34 +1,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+<div class="col-md-12 col-sm-12 col-xs-12 profile_details" th:each="item :${list}" style="border: 1px solid #e3e3e3;">
 	<div class="well profile_view">
 		<div class="col-sm-12">
 			<h2 class="brief">
-				<i>Nama Lengkap</i>
+				<i th:text="${item.fullname}"></i>
 			</h2>
-			<div class="left col-xs-7">
-				<h4>Nama Panggilan</h4>
+			<div class="left col-xs-12">
+				<h4 th:text="${item.nickname}"></h4>
 				<p>
-					<strong>Email: </strong> test@gmail.com.
+					<strong>Email: </strong> <td th:text="${item.email}"></td>
 				</p>
 				<ul class="list-unstyled">
-					<li><i class="fa fa-building"></i> Address:</li>
-					<li><i class="fa fa-phone"></i> Phone #:</li>
-					<li><i class="fa fa-phone"></i> Pendidkan #:</li>
+					<li><i class="fa fa-phone"></i> <strong>Phone #:</strong> <td th:text="${item.phoneNumber1}"></td></li> 
+					<li><i class="fa fa-phone"></i> <strong>Pendidkan #:</strong> <td>-</td></li>
 				</ul>
 			</div>
-			<div class="right col-xs-5 text-center">
+			<!-- 
+			<div class="right col-xs-12 text-center">
 				<img th:src="@{~/build/images/user.png}" alt="" class="img-circle img-responsive">
-			</div>
+			</div>  -->
 		</div>
 		<div class="col-xs-12 bottom text-center">
 			<div class="col-xs-12 col-sm-6 emphasis">
 			</div>
 			<div class="col-xs-12 col-sm-6 emphasis">
-				<button type="button" class="btn btn-success btn-xs btn-send-mail" th:value="1">
-					<i class="fa fa-envelope"> </i> Send Mail
+				<button type="button" class="btn btn-success btn-xs btn-send-mail" th:value="${item.id}">
+					<i class="fa fa-envelope"> </i> Kirim Token
 				</button>
-				<button type="button" class="btn btn-primary btn-xs btn-view" th:value="1">
-					<i class="fa fa-user"> </i> View Profile
+				<button type="button" class="btn btn-primary btn-xs btn-view" th:value="${item.id}">
+					<i class="fa fa-search"> </i> Detail pelamar
 				</button>
 			</div>
 		</div>

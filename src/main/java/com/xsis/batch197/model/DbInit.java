@@ -84,7 +84,7 @@ public class DbInit implements CommandLineRunner {
 			listMenu.add(new XMenuModel("Organisasi", "", 7, 1, "pelamar/organisasi", "BIODATA", pelamar, userId));
 			listMenu.add(new XMenuModel("Keluarga", "", 8, 1, "pelamar/keluarga", "BIODATA", pelamar, userId));
 			listMenu.add(new XMenuModel("Keahlian", "", 9, 1, "pelamar/keahlian", "BIODATA", pelamar, userId));
-			listMenu.add(new XMenuModel("Lain-Lain", "", 10, 1, "pelamar/biodata", "BIODATA", pelamar, userId));
+			listMenu.add(new XMenuModel("Lain-Lain", "", 10, 1, "pelamar/lain-lain", "BIODATA", pelamar, userId));
 			listMenu.add(new XMenuModel("Dokument", "", 11, 1, "pelamar/dokumen", "BIODATA", pelamar, userId));
 			listMenu.add(new XMenuModel("Catatan", "", 12, 1, "pelamar/catatan", "BIODATA", pelamar, userId));
 			listMenu.add(new XMenuModel("Aktifiasi Akun", "", 13, 1, "pelamar/aktifasi", "BIODATA", pelamar, userId));

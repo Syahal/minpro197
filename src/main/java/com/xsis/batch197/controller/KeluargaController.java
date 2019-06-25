@@ -23,7 +23,7 @@ public class KeluargaController extends BaseController {
 	
 	@GetMapping(value="/pelamar/keluarga/{bid}")
 	private ModelAndView index(@PathVariable("bid") Long biodataId) {
-		// view sertifkasi
+		// view keluarga
 		ModelAndView view = new ModelAndView("keluarga/index");
 		// get biodata Id
 		XBiodataModel biodata = this.bioRepo.findById(biodataId).orElse(null);
@@ -34,4 +34,6 @@ public class KeluargaController extends BaseController {
 		view.addObject("listKeluarga", listKeluarga);
 		return view;
 	}
+	
+	
 }

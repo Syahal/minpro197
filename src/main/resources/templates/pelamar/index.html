@@ -10,7 +10,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Pelamar</h3>
+                <h3>XSIS 2.0</h3>
             </div>
 
             <div class="title_right">
@@ -20,7 +20,7 @@
                         <input type="text" id="txt-search" class="form-control" placeholder="Cari Nama Pelamar...">
 	                    <div class="input-group-btn">
 		                      <button class="btn btn-default" type="button" id="btn-cari" style="margin-right:0px;">Cari</button>
-		                      <button class="btn btn-default" type="reset">Reset</button>
+		                      <button class="btn btn-default" type="reset" id="btn-reset" onclick="document.getElementById('txt-search').value = ''">Reset</button>
 	                    </div>
                     </div>
                     </form>
@@ -63,8 +63,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="main-modal" data-layout-fragment="content-modal">
-	<div class="modal-dialog modal-lg" style="width:75%;">
+<div class="modal fade bd-example-modal-xl" id="main-modal" data-layout-fragment="content-modal">
+	<div class="modal-dialog modal-xl" style="width:90%;">
 		<div class="modal-content" id="main-modal-content">
 		</div>
 	</div>
@@ -75,7 +75,7 @@
 		
 	});
 	
-	// tambah biodata
+	// tambah Biodata Pelamar
 	$("#btn-add").click(function(event){
 		event.preventDefault();
 		var url = $(this).attr('href');
@@ -94,15 +94,32 @@
 	$('#btn-cari').on('click', function(){
 		var key = $('#txt-search').val();
 		var url = '/pelamar/list/'+ key;
-		$.ajax({
-			url:url,
-			type:'get',
-			dataType:'html',
-			success: function(data){
-				$('#row-content').html(data);
-			}
-		});
+		if(key == "") {
+			alert("Nama Pelamar Tidak boleh Kosong!")
+		} else {
+			$.ajax({
+				url:url,
+				type:'get',
+				dataType:'html',
+				success: function(data){
+					$('#row-content').html(data);
+				}
+			});
+		}
 	});
+	
+	//reset pencarian
+		$("#btn-reset").click(function() {
+			// request halaman dengan ajax
+			$.ajax({
+				url : '/pelamar/list/',
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					location.reload();
+				}
+			});
+		});
 	
 	// detail view biodata
 	$('#row-content').on('click','.btn-view', function(){
