@@ -1,17 +1,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div class="col-md-12 col-sm-12 col-xs-12 profile_details" th:each="item :${list}" style="border: 1px solid #e3e3e3;">
+<div class="col-md-12 col-sm-12 col-xs-12 profile_details" th:each="biodata : ${list.content}" style="border: 1px solid #e3e3e3;">
 	<div class="well profile_view">
-		<div class="col-sm-12">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 			<h2 class="brief">
-				<i th:text="${item.fullname}"></i>
+				<i th:text="${biodata.fullname}">Nama Lengkap</i>
 			</h2>
 			<div class="left col-xs-12">
-				<h4 th:text="${item.nickname}"></h4>
+				<h4 th:text="${biodata.nickname}">Nama Panggilan</h4>
 				<p>
-					<strong>Email: </strong> <td th:text="${item.email}"></td>
+					<strong>Email: </strong> <span th:text="${biodata.email}"></span>
 				</p>
 				<ul class="list-unstyled">
-					<li><i class="fa fa-phone"></i> <strong>Phone #:</strong> <td th:text="${item.phoneNumber1}"></td></li> 
+					<li><i class="fa fa-phone"></i> <strong>Phone #:</strong> <span th:text="${biodata.phoneNumber1}"></span></li> 
 					<li><i class="fa fa-phone"></i> <strong>Pendidkan #:</strong> <td>-</td></li>
 				</ul>
 			</div>
@@ -21,13 +21,12 @@
 			</div>  -->
 		</div>
 		<div class="col-xs-12 bottom text-center">
+			
 			<div class="col-xs-12 col-sm-6 emphasis">
-			</div>
-			<div class="col-xs-12 col-sm-6 emphasis">
-				<button type="button" class="btn btn-success btn-xs btn-send-mail" th:value="${item.id}">
+				<button type="button" class="btn btn-success btn-xs btn-send-mail" th:value="${biodata.id}">
 					<i class="fa fa-envelope"> </i> Kirim Token
 				</button>
-				<button type="button" class="btn btn-primary btn-xs btn-view" th:value="${item.id}">
+				<button type="button" class="btn btn-primary btn-xs btn-view" th:value="${biodata.id}">
 					<i class="fa fa-search"> </i> Detail pelamar
 				</button>
 			</div>

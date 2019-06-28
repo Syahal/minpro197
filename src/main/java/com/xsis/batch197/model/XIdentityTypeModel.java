@@ -1,10 +1,14 @@
 package com.xsis.batch197.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotBlank;
@@ -25,9 +29,15 @@ public class XIdentityTypeModel extends BaseModel {
 	@NotEmpty
 	@Column(name = "name", length = 50, nullable = false)
 	private String name;
-
+	
+	@NotNull
+	@NotBlank
+	@NotEmpty
 	@Column(name = "description", length = 100, nullable = true)
 	private String description;
+	
+	@OneToMany(mappedBy = "identitytype")
+	private List<XBiodataModel> listBiodata = new ArrayList<XBiodataModel>();
 
 	public XIdentityTypeModel() {
 		super();
@@ -35,12 +45,18 @@ public class XIdentityTypeModel extends BaseModel {
 	
 	public XIdentityTypeModel(String name, String desc) {
 		super();
-		this.name=name;
-		this.description=desc;
+		this.description = desc;
+		this.name= name;
 	}
 	
-	public XIdentityTypeModel(Long userId) {
+	public XIdentityTypeModel(String name, String desc, Long userId) {
 		super(userId);
+		this.description = desc;
+		this.name = name;
+	}
+	
+	public XIdentityTypeModel(Long UserId) {
+		super(UserId);
 	}
 	
 	public Long getId() {
@@ -67,4 +83,12 @@ public class XIdentityTypeModel extends BaseModel {
 		this.description = description;
 	}
 
+	public List<XBiodataModel> getListBiodata() {
+		return listBiodata;
+	}
+
+	public void setListBiodata(List<XBiodataModel> listBiodata) {
+		this.listBiodata = listBiodata;
+	}
+	
 }

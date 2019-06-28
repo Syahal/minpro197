@@ -1,13 +1,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<form id="form-keahlian" th:action="@{~/keahlian/save}" th:object="${keahlian}" method="POST">
+<form id="form-keahlian" th:action="@{~/keahlian/update}" th:object="${keahlian}" method="POST">
 	<div class="modal-header">
 		<button type="button" class="close btn-xs" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-		<h4 class="modal-title">Tambah Keahlian</h4>
+		<h4 class="modal-title">Edit Keahlian</h4>
 		<!-- Biodata ID, dengan HIDDEN -->
 		<input type="hidden" th:field="*{biodataId}" />
 	</div>
 	<div class="modal-body">
-		<div class="row">
+		<div class="row" style="margin-left:0px;">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div th:class="${#fields.hasErrors('skillName')} ? 'form-group has-error':'form-group'">
 					<label>Nama Keahlian</label>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="margin-left:0px;">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
 					<label>Catatan</label>

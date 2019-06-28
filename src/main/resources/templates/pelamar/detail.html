@@ -4,10 +4,10 @@
 	<h4 class="modal-title" id="biodata-title">Detail Pelamar</h4>
 </div>
 <div class="modal-body">
-	<div class="row" style="margin:0;">
+	<div class="row">
 		<div class="col-md-2">
 			<div class="btn-group-vertical">
-				<button th:each="item : ${biodataMenuList}" class="btn btn-default biodata-menu" th:href="@{~/{url}(url=${item.menuUrl})}" th:text="${item.title}" data-biodata-id="1"></button>
+				<button th:each="item : ${biodataMenuList}" class="btn btn-default biodata-menu" th:href="@{~/{url}(url=${item.menuUrl})}" th:text="${item.title}" th:attr="data-biodata-id=${pelamar.id}"></button>
 			</div>
 		</div>
 		<div class="col-md-10" id="detail-content">

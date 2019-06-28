@@ -1,13 +1,17 @@
 package com.xsis.batch197.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.xsis.batch197.model.XCompanyModel;
+import com.xsis.batch197.model.XMenuModel;
 import com.xsis.batch197.model.XRoleModel;
 import com.xsis.batch197.repository.XCompanyRepo;
 import com.xsis.batch197.repository.XMenuRepo;
@@ -27,9 +31,9 @@ public class BaseMenuController {
 	@ModelAttribute
 	public void addAttribute(Model model, HttpSession session) {
 		// main menu
-		model.addAttribute("menuList", this.menuRepo.findByMenuType("SIDEBAR"));
+		model.addAttribute("menuList", this.menuRepo.findByMenuType("SIDEBAR", Sort.by("menuOrder").ascending()));
 		// biodata menu
-		model.addAttribute("biodataMenuList", this.menuRepo.findByMenuType("BIODATA"));
+		model.addAttribute("biodataMenuList", this.menuRepo.findByMenuType("BIODATA", Sort.by("menuOrder").ascending()));
 		
 		
 		if (session.getAttribute("roleId") != null) {

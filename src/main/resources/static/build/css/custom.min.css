@@ -706,6 +706,10 @@ table.no-margin .progress {
 	margin-left: 230px;
 }
 
+.modal-body .row {
+	margin-left: 0px;
+}
+
 .grid_slider .col-md-6 {
 	padding: 0 40px
 }
@@ -789,12 +793,16 @@ a {
 	cursor: pointer
 }
 
+.nav.side-menu>li:hover {
+	background-color: #006;
+}
+
 .nav.side-menu>li>a {
 	margin-bottom: 6px
 }
 
 .nav.side-menu>li>a:hover {
-	color: #73879C !important
+	color: #fff !important
 }
 
 .nav.side-menu>li>a:hover, .nav>li>a:focus {
@@ -861,11 +869,11 @@ a {
 }
 
 .nav.side-menu>li.active, .nav.side-menu>li.current-page {
-	border-right: 5px solid #1ABB9C
+	border-right: 5px solid #006;
 }
 
 .nav li.current-page {
-	background: #006;
+	
 }
 
 .nav li li li.current-page {
@@ -1247,9 +1255,9 @@ legend {
 }
 
 .profile_details .profile_view .bottom {
-	background: #F2F5F7;
+	/* background: #F2F5F7;*/
 	padding: 9px 0;
-	border-top: 1px solid #E6E9ED
+	/* border-top: 1px solid #E6E9ED */
 }
 
 .profile_details .profile_view .left {

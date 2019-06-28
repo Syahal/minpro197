@@ -1,14 +1,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<form id="form-biodata">
+<form id="form-biodata" th:action="@{~/pelamar/save}" th:object="${pelamar}" method="POST">
 	<div class="modal-header">
 		<button type="button" class="close btn-xs" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
 		<h4 class="modal-title">Tambah Pelamar</h4>
+		<!-- Mengambil biodataID, dengan Hidden -->
+		<input type="hidden" th:field="*{biodataId}" />
 	</div>
 	<div class="modal-body">
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group">
-				<label>Nama Lengkap</label>
-				<input type="text" class="form-control"/>
+				<div th:class="${#fields.hasErrors('fullname')}">
+					<label>Nama Lengkap</label>
+					<input type="text" class="form-control"/>
+					<span th:if="${#fields.hasErrors('fullname')}" class="help-block" th:errors="*{fullname}">pesanerror</span>
+				</div>
 			</div>
 			
 			<div class="col-md-6 col-sm-6 col-xs-12 form-group">

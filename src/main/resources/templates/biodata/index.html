@@ -6,12 +6,12 @@
 		<div class="x_title">
 			<h2>Biodata</h2>
 			<ul class="nav navbar-left panel_toolbox">
-				<li><a th:href="@{~/keahlian/add}" id="btn-addkeahlian"><i
+				<li><a th:href="@{~/keahlian/add}" id="btn-add-bio" th:attr="data-biodata-id=${biodata.id}"><i
 						class="fa fa-plus"></i></a></li>
 			</ul>
 			<div class="clearfix"></div>
 		</div>
-		<div class="x_content">
+		<div class="x_content" id="biodata-content">
 			<div class="row" style="margin: 0;">
 				<table style="width: 980px;">
 					<tbody>
