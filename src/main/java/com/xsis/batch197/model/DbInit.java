@@ -10,12 +10,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.xsis.batch197.repository.XAddressBookRepo;
 import com.xsis.batch197.repository.XCompanyRepo;
+import com.xsis.batch197.repository.XFamilyRelationRepo;
 import com.xsis.batch197.repository.XFamilyTreeTypeRepo;
 import com.xsis.batch197.repository.XIdentityTypeRepo;
 import com.xsis.batch197.repository.XMaritalStatusRepo;
 import com.xsis.batch197.repository.XMenuRepo;
 import com.xsis.batch197.repository.XReligionRepo;
 import com.xsis.batch197.repository.XRoleRepo;
+import com.xsis.batch197.repository.XSkillLevelRepo;
 import com.xsis.batch197.repository.XUserRoleRepo;
 
 @Service
@@ -49,6 +51,12 @@ public class DbInit implements CommandLineRunner {
 	
 	@Autowired
 	private XFamilyTreeTypeRepo familytreetypeRepo;
+	
+	@Autowired
+	private XFamilyRelationRepo familyrelationRepo;
+	
+	@Autowired
+	private XSkillLevelRepo skillLevelRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -174,12 +182,29 @@ public class DbInit implements CommandLineRunner {
 			this.identityRepo.saveAll(identityList);
 		}
 		
-		//initial familyTreeType
-		if(this.familytreetypeRepo.findAll().size()==0) {
-			List<XFamilyTreeTypeModel> familytreetypeList = new ArrayList<XFamilyTreeTypeModel>();
-			familytreetypeList.add(new XFamilyTreeTypeModel("Keluarga Inti", "Keluarga inti dari pelamar atau Keluarga Kandung", userId));
-			
-			this.familytreetypeRepo.saveAll(familytreetypeList);
+		// initial family tree type repo
+		if(this.familytreetypeRepo.findAll().size() == 0) {
+			List<XFamilyTreeTypeModel> familyTreeTypeList = new ArrayList<XFamilyTreeTypeModel>();
+			familyTreeTypeList.add(new XFamilyTreeTypeModel("KELUARGA INTI", " - ", userId));
+			familyTreeTypeList.add(new XFamilyTreeTypeModel("KELUARGA BESAR", " - ", userId));
+		}
+		
+		// initial family relation repo
+		if(this.familyrelationRepo.findAll().size() == 0) {
+			List<XFamilyRelationModel> familyRelationList = new ArrayList<XFamilyRelationModel>();
+			familyRelationList.add(new XFamilyRelationModel("AYAH", " - ", userId));
+			familyRelationList.add(new XFamilyRelationModel("IBU", " - ", userId));
+			familyRelationList.add(new XFamilyRelationModel("KAKAK", " - ", userId));
+			familyRelationList.add(new XFamilyRelationModel("ADIK", " - ", userId));
+			familyRelationList.add(new XFamilyRelationModel("ANAK", " - ", userId));
+		}
+		
+		// initial skill Level repo
+		if(this.skillLevelRepo.findAll().size() == 0) {
+			List<XSkillLevelModel> skillLevelList = new ArrayList<XSkillLevelModel>();
+			skillLevelList.add(new XSkillLevelModel("Pemula", " - ", userId));
+			skillLevelList.add(new XSkillLevelModel("Menengah", " - ", userId));
+			skillLevelList.add(new XSkillLevelModel("Lanutan", " - ", userId));
 		}
 	}
 

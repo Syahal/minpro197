@@ -35,9 +35,6 @@ public class XIdentityTypeModel extends BaseModel {
 	@NotEmpty
 	@Column(name = "description", length = 100, nullable = true)
 	private String description;
-	
-	@OneToMany(mappedBy = "identitytype")
-	private List<XBiodataModel> listBiodata = new ArrayList<XBiodataModel>();
 
 	public XIdentityTypeModel() {
 		super();
@@ -45,14 +42,14 @@ public class XIdentityTypeModel extends BaseModel {
 	
 	public XIdentityTypeModel(String name, String desc) {
 		super();
-		this.description = desc;
-		this.name= name;
+		this.name=name;
+		this.description=desc;
 	}
 	
 	public XIdentityTypeModel(String name, String desc, Long userId) {
 		super(userId);
-		this.description = desc;
-		this.name = name;
+		this.name=name;
+		this.description=desc;
 	}
 	
 	public XIdentityTypeModel(Long UserId) {
@@ -81,14 +78,6 @@ public class XIdentityTypeModel extends BaseModel {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<XBiodataModel> getListBiodata() {
-		return listBiodata;
-	}
-
-	public void setListBiodata(List<XBiodataModel> listBiodata) {
-		this.listBiodata = listBiodata;
 	}
 	
 }

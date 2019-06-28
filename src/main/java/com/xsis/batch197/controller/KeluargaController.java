@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xsis.batch197.model.XBiodataModel;
@@ -25,10 +26,10 @@ public class KeluargaController extends BaseController {
 	private XKeluargaRepo kelRepo;
 
 	@Autowired
-	private XFamilyTreeTypeRepo susunanRepo;
+	private XFamilyTreeTypeRepo familytreetypeRepo;
 
 	@Autowired
-	private XFamilyRelationRepo hubunganRepo;
+	private XFamilyRelationRepo familyrelationRepo;
 
 	@GetMapping(value = "/pelamar/keluarga/{bid}")
 	private ModelAndView index(@PathVariable("bid") Long biodataId) {
@@ -56,18 +57,9 @@ public class KeluargaController extends BaseController {
 		// add object keluarga
 		view.addObject("keluarga", keluarga);
 
-		// mengambil data susunan keluarga yang sudah ada
-		List<XFamilyTreeTypeModel> listSusunan = susunanRepo.findAll();
-		// object dari listSusunan akan dikirim ke view, agar pilihan FamilyTreeTypeId
-		// bisa terisi datanya
-		view.addObject("listSusunan", listSusunan);
-
-		// mengambil data hubungan keluarga yang sudah ada
-		List<XFamilyRelationRepo> listHubungan = hubunganRepo.findAll();
-		// object dari listHubungan akan dikirim ke view, agar pilihan FamilyTreeRelationId
-		// bisa terisi datanya
-		view.addObject("listHubungan", listHubungan);
+		
 
 		return view;
 	}
+
 }
